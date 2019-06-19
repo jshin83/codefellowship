@@ -9,17 +9,26 @@
 <body>
 <div th:replace="fragments/header :: blueberry">...</div>
 
-<p>Hi <span th:text="${principal.name}"></span></p>
+<h1>Hi <span th:text="${principal.name}"></span></h1>
 
 <h3>Your Profile:</h3>
-<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdl1rmeMz-SG_9GroHp8ytiXUCEhNHoAjQ6w-Kz1ZajI6JEmI_" height="200px" width="200px"/>
-<p>Username: <span th:text="${currentUser.username}"/></p>
-<p>First Name: <span th:text="${currentUser.firstName}"/></p>
-<p>Last Name: <span th:text="${currentUser.lastName}"/></p>
-<p>Date of Birth: <span th:text="${currentUser.dateOfBirth}"/></p>
-<p>Bio: <span th:text="${currentUser.bio}"/></p>
-<br/>
-<a href="/potato">logout</a>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdl1rmeMz-SG_9GroHp8ytiXUCEhNHoAjQ6w-Kz1ZajI6JEmI_" height="200px" width="200px"/>
+    <p>Username: <span th:text="${currentUser.username}"/></p>
+    <p>First Name: <span th:text="${currentUser.firstName}"/></p>
+    <p>Last Name: <span th:text="${currentUser.lastName}"/></p>
+    <p>Date of Birth: <span th:text="${currentUser.dateOfBirth}"/></p>
+    <p>Bio: <span th:text="${currentUser.bio}"/></p>
+    <br/>
+    <h3>Your Posts</h3>
+    <span th:text="${#lists.size(currentUser.posts)} != 0? '': 'You do not have any posts.'"></span>
 
+    <ul>
+        <li th:each="post : ${currentUser.posts}">
+            <!--<a th:href="'/dinosaurs/' + ${dino.id}">-->
+            <span th:text="${post.body}"></span><br/>
+            <span th:text="${post.createdAt}"></span>
+            <!--</a>-->
+        </li>
+    </ul>
 </body>
 </html>

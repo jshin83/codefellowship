@@ -25,7 +25,7 @@ public class AppUser implements UserDetails {
     String bio;
 
     @OneToMany(mappedBy = "creator")
-    List<Post> dinosaurs;
+    List<Post> posts;
 
     @DateTimeFormat (pattern = "yyyy-mm-dd")
     Date dateOfBirth;
@@ -122,5 +122,13 @@ public class AppUser implements UserDetails {
 
     public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> dinosaurs) {
+        this.posts = dinosaurs;
     }
 }

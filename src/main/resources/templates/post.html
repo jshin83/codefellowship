@@ -7,9 +7,11 @@
     <link href="/styles.css" rel="stylesheet" />
 </head>
 <body>
+<div th:replace="fragments/header :: blueberry">...</div>
+
+<h1>Create a New Post</h1>
 <form action="/post" method="POST">
-    <p>New Post</p>
-    Post: <textarea name="body" rows="5" cols="50"/></textarea>
+    <span>Post:</span><br/><textarea name="body" rows="5" cols="50"/></textarea>
     <br/>
     <input type="submit" />
 </form>

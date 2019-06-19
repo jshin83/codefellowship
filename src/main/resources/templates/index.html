@@ -4,11 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Welcome </title>
+    <link href="/styles.css" rel="stylesheet" />
+
 </head>
 <body>
+<div th:replace="fragments/header :: notPermitted">...</div>
+
 <h1>Welcome!</h1>
-<p>This is the Codefellowship website! If you are new and would like to sign up,</p>
-<p>use this <a th:href="@{/signup}">link</a> to get a new Codefellowship account.
+<p>This is the Codefellowship website!</p>
+<p>This is a place where you could create posts.</p>
+<p>If you are new and would like to sign up,</p>
+<p>Use this <a th:href="@{/signup}">link</a> to get a new Codefellowship account.
 
 <p>Use this <a th:href="@{/login}">link</a> to sign in as an existing user for a Codefellowship account.
 
