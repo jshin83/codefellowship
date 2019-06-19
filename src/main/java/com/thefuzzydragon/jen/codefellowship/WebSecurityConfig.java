@@ -5,6 +5,7 @@ import com.thefuzzydragon.jen.codefellowship.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -37,7 +38,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                 // allow requests to all URLS that match the patterns even if not logged in
-                .antMatchers("/", "/login", "/signup").permitAll()
+                .antMatchers(HttpMethod.GET, "/", "/*.css").permitAll()
+                .antMatchers("/login", "/signup", "/error").permitAll()
                 // anything else, you must be logged in
                 .anyRequest().authenticated()
                 .and()
@@ -45,6 +47,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/login")
                     .defaultSuccessUrl("/myprofile", true)
 //                    .failureUrl("/login?error=true")
+                    .failureUrl("/error")
                 .and()
                 .logout().logoutUrl("/potato").deleteCookies("JSESSIONID");
     }

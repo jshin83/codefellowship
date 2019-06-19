@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Log in to Codefellowship</title>
+    <link href="/styles.css" rel="stylesheet" />
 </head>
 <body>
+<div th:replace="fragments/header :: notPermitted">...</div>
+
 <h1>Log in</h1>
 <form action="/login" method="POST">
-    Username <input name="username" />
-    Password <input name="password" />
+    <span>Username </span><input name="username" required />
+    <span>Password </span><input name="password" required />
     <input type="submit" />
 </form>
 <p>Use this <a th:href="@{/signup}">link</a> to sign up for a Codefellowship account.

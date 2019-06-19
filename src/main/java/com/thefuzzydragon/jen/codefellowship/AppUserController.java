@@ -35,11 +35,14 @@ public class AppUserController {
 
     @GetMapping("/myprofile")
     public String getMyProfile(Principal p, Model m) {
-        System.out.println(p.getName());
         m.addAttribute("principal", p);
+
         //converts principal object to my Model object
-        AppUser currentUser = (AppUser)((UsernamePasswordAuthenticationToken) p).getPrincipal();
+//        AppUser currentUser = (AppUser)((UsernamePasswordAuthenticationToken) p).getPrincipal();
+
+        AppUser currentUser = appUserRepository.findByUsername(p.getName());
         m.addAttribute("currentUser", currentUser);
+
         return "myprofile";
     }
 

@@ -1,0 +1,15 @@
+<header class="nav" th:fragment="blueberry" xmlns:th="http://www.springframework.org/schema/security">
+    <nav>
+        <a href="/post">Create a Post</a>
+        <a href="/myprofile">My Profile</a>
+        <a href="/potato">Log out</a>
+    </nav>
+</header>
+
+<header class="nav" th:fragment="notPermitted" xmlns:th="http://www.springframework.org/schema/security">
+    <nav>
+        <a href="/">Home</a>
+        <a href="/signup">Make New Account</a>
+        <a href="/login">Existing User</a>
+    </nav>
+</header>
