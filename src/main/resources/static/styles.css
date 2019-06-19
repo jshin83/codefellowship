@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Boogaloo|Mali|Neucha|News+Cycle&display=swap');
+h1 {
+    font-family: 'Mali', 'News Cycle', sans-serif, 'Neucha', 'Boogaloo', cursive, 'Comic Sans MS', arial, helvetica;
+
+}
+
+.nav {
+    color: navy;
+}

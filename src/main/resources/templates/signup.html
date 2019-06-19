@@ -7,12 +7,12 @@
 </head>
 <body>
 <form action="/signup" method="POST">
-    <p>Username: <input name="username" /></p>
-    <p>Password: <input name="password" type="password"/></p>
-    <p>First Name: <input name="firstName" /></p>
-    <p>Last Name: <input name="lastName" /></p>
-    <p>Date of Birth: <input name="dateOfBirth" type="date" /></p>
-    Bio: <textarea name="bio" rows="5" cols="20"/></textarea>
+    <p>Username: <input name="username" required /></p>
+    <p>Password: <input name="password" type="password" required /></p>
+    <p>First Name: <input name="firstName" required /></p>
+    <p>Last Name: <input name="lastName" required /></p>
+    <p>Date of Birth: <input name="dateOfBirth" type="date" required /></p>
+    Bio: <textarea name="bio" rows="5" cols="20" required></textarea>
     <br/>
     <input type="submit" />
 </form>

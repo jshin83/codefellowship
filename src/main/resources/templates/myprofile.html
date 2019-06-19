@@ -4,8 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <title>My Profile</title>
+    <link href="/styles.css" rel="stylesheet" />
 </head>
 <body>
+<div th:replace="fragments/header :: blueberry">...</div>
+
 <p>Hi <span th:text="${principal.name}"></span></p>
 
 <h3>Your Profile:</h3>

@@ -9,6 +9,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import javax.persistence.*;
 import java.util.Collection;
 import java.sql.Date;
+import java.util.List;
 
 @Entity
 public class AppUser implements UserDetails {
@@ -22,6 +23,10 @@ public class AppUser implements UserDetails {
     String firstName;
     String lastName;
     String bio;
+
+    @OneToMany(mappedBy = "creator")
+    List<Post> dinosaurs;
+
     @DateTimeFormat (pattern = "yyyy-mm-dd")
     Date dateOfBirth;
 
@@ -34,11 +39,6 @@ public class AppUser implements UserDetails {
         this.lastName = lastName;
         this.bio = bio;
         this.dateOfBirth = dateOfBirth;
-    }
-
-    public AppUser(String username, String password) {
-        this.username = username;
-        this.password = password;
     }
 
     @Override
