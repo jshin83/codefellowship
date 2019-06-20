@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Feed</title>
+    <link href="/styles.css" rel="stylesheet" />
+
+</head>
+<body>
+<div th:replace="fragments/header :: blueberry">...</div>
+
+<h3>Posts of those you are following:</h3>
+    <div th:each="account : ${following}">
+    <!--&lt;!&ndash;<span th:text="${#lists.size(currentUser.posts)} != 0? '': 'There are no posts.'"></span>&ndash;&gt;-->
+    <!--<p th:text="${account.username}"> is the username of this account you are following.</p>-->
+
+    <!--<ul>-->
+        <!--<li th:each="post : ${account.posts}">-->
+            <!--&lt;!&ndash;<a th:href="'/dinosaurs/' + ${dino.id}">&ndash;&gt;-->
+            <!--<span th:text="${post.body}"></span><br/>-->
+            <!--<span th:text="${post.createdAt}"></span>-->
+        <!--</li>-->
+    <!--</ul>-->
+        <a th:href="'/myprofile/' + ${account.username}">Go to this page</a>
+
+    </div>
+</body>
+</html>

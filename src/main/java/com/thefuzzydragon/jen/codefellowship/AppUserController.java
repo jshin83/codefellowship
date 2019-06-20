@@ -16,6 +16,7 @@ import org.springframework.web.servlet.view.RedirectView;
 import java.security.Principal;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class AppUserController {
@@ -27,9 +28,7 @@ public class AppUserController {
     PasswordEncoder bCryptPasswordEncoder;
 
     @GetMapping("/")
-    public String getDinosaurs(Principal p, Model m) {
-//        System.out.println(p.getName());
-//        m.addAttribute("principal", p);
+    public String getWelcomePag() {
         return "index";
     }
 
@@ -42,6 +41,45 @@ public class AppUserController {
 
         AppUser currentUser = appUserRepository.findByUsername(p.getName());
         m.addAttribute("currentUser", currentUser);
+
+        //get all users
+        Iterable<AppUser> users = appUserRepository.findAll();
+        List<AppUser> allUsers = new ArrayList<>();
+
+        users.forEach(allUsers::add);
+        allUsers.remove(currentUser);
+
+        m.addAttribute("allUsers", allUsers);
+
+        return "myprofile";
+    }
+
+    @PostMapping("/add/{username}")
+    public RedirectView follow(@PathVariable String username, Principal p) {
+
+        AppUser userToAdd = appUserRepository.findByUsername(username);
+
+        AppUser currentUser = appUserRepository.findByUsername(p.getName());
+        currentUser.following.add(userToAdd);
+        appUserRepository.save(currentUser);
+
+        return new RedirectView("/myprofile");
+    }
+
+    @GetMapping("/myprofile/{username}")
+    public String getFollowingProfile(@PathVariable String username, Model m) {
+
+        m.addAttribute("principal", false);
+
+        //converts principal object to my Model object
+//        AppUser currentUser = (AppUser)((UsernamePasswordAuthenticationToken) p).getPrincipal();
+
+        AppUser currentUser = appUserRepository.findByUsername(username);
+        m.addAttribute("currentUser", currentUser);
+
+        //get all users
+//        Iterable<AppUser> allUsers = appUserRepository.findAll();
+//        m.addAttribute("allUsers", allUsers);
 
         return "myprofile";
     }
