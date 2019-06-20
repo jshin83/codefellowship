@@ -10,6 +10,7 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.sql.Date;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class AppUser implements UserDetails {
@@ -26,6 +27,9 @@ public class AppUser implements UserDetails {
 
     @OneToMany(mappedBy = "creator")
     List<Post> posts;
+
+    @ManyToMany
+    Set<AppUser> following;
 
     @DateTimeFormat (pattern = "yyyy-mm-dd")
     Date dateOfBirth;
@@ -130,5 +134,13 @@ public class AppUser implements UserDetails {
 
     public void setPosts(List<Post> dinosaurs) {
         this.posts = dinosaurs;
+    }
+
+    public Set<AppUser> getFollowing() {
+        return following;
+    }
+
+    public void setFollowing(Set<AppUser> following) {
+        this.following = following;
     }
 }

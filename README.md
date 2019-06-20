@@ -6,6 +6,10 @@ Has default welcome page with nav.
 
 Nav bar created with fragments.
 
+Feed page that shows those you are following.
+
+Profile page shows all users. Clickable link to other's page, could follow if not already following.
+
 **Routes**
 
 + `/` default, homepage
@@ -13,5 +17,7 @@ Nav bar created with fragments.
 + `/login` login for existing user
 + `/myprofile` profile page for logged-in user - cannot access if not logged in
 + `/post` create a new post as a logged-in user
++ `/feed` see those you are following
+
 
 [code](./src/main/java/com.thefuzzydragon.jen.codefellowship)

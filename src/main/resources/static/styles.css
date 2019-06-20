@@ -4,7 +4,7 @@
 
 /*margins*/
 body {
-    margin: 5% 8%;
+    margin: 12% 9% 10% 9%;
 }
 
 .red {
@@ -64,4 +64,8 @@ input[type=submit] {
 
 .nav a {
     margin-right: 50px;
+}
+
+.bold {
+    color: #4286f4;
 }
