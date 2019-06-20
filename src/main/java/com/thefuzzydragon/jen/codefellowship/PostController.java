@@ -39,7 +39,7 @@ public class PostController {
         AppUser currentUser = appUserRepository.findByUsername(p.getName());
         List<AppUser> following = new ArrayList<>(currentUser.following);
 
-        m.addAttribute(following);
+        m.addAttribute("following", following);
         return "/feed";
     }
 }

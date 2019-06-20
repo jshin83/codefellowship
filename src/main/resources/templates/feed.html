@@ -11,20 +11,23 @@
 <body>
 <div th:replace="fragments/header :: blueberry">...</div>
 
-<h3>Posts of those you are following:</h3>
+<h1>Posts of those you are following:</h1>
+    <span th:text="${#lists.size(following)} != 0? '': 'You are not following any accounts.'"></span>
+
     <div th:each="account : ${following}">
-    <!--&lt;!&ndash;<span th:text="${#lists.size(currentUser.posts)} != 0? '': 'There are no posts.'"></span>&ndash;&gt;-->
-    <!--<p th:text="${account.username}"> is the username of this account you are following.</p>-->
+        <h2 th:text="${account.username}" class="bold"></h2>
+        <p th:text="${'Name: ' + account.lastName +', '+ account.firstName}"></p>
 
-    <!--<ul>-->
-        <!--<li th:each="post : ${account.posts}">-->
-            <!--&lt;!&ndash;<a th:href="'/dinosaurs/' + ${dino.id}">&ndash;&gt;-->
-            <!--<span th:text="${post.body}"></span><br/>-->
-            <!--<span th:text="${post.createdAt}"></span>-->
-        <!--</li>-->
-    <!--</ul>-->
+        <h3>Posts:</h3>
+        <span th:text="${#lists.size(account.posts)} != 0? '': 'There are no posts for this user.'"></span>
+        <ol>
+            <li th:each="post : ${account.posts}">
+                <span th:text="${post.body}"></span><br/>
+                <span th:text="${post.createdAt}"></span>
+            </li>
+        </ol>
         <a th:href="'/myprofile/' + ${account.username}">Go to this page</a>
-
+        <hr/>
     </div>
 </body>
 </html>

@@ -9,42 +9,39 @@
 <body>
 <div th:replace="fragments/header :: blueberry">...</div>
 
-<div th:if="${principal == false}">
+<h1>Profile of <span th:text="${currentUser.username}"></span></h1>
+
+<div th:if="${principal == false and alreadyFollowing == false}">
     <form action="#" th:action="@{/add/} + ${currentUser.username}" method="POST">
 
-    <input type="submit" value="Follow" class="followButton">
+        <input type="submit" value="Follow" class="followButton">
     </form>
 </div>
 
-<h1>Profile of <span th:text="${currentUser.username}"></span></h1>
-
-<h3>Stats:</h3>
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdl1rmeMz-SG_9GroHp8ytiXUCEhNHoAjQ6w-Kz1ZajI6JEmI_" height="200px" width="200px"/>
+<h2>Stats:</h2>
+    <img th:src="${principal}? 'https://static.pokemonpets.com/images/monsters-images-300-300/7-Squirtle.png':'https://tattoodo-mobile-app.imgix.net/images/posts/IMG_20170516_104411_WxMRnO1msS.jpg?w=1080&fit=crop&auto=format%2Ccompress'" height="200px" width="200px"/>
     <p>Username: <span th:text="${currentUser.username}"/></p>
     <p>First Name: <span th:text="${currentUser.firstName}"/></p>
     <p>Last Name: <span th:text="${currentUser.lastName}"/></p>
     <p>Date of Birth: <span th:text="${currentUser.dateOfBirth}"/></p>
     <p>Bio: <span th:text="${currentUser.bio}"/></p>
     <br/>
-    <h3>Your Posts</h3>
+    <h2>Posts</h2>
     <span th:text="${#lists.size(currentUser.posts)} != 0? '': 'There are no posts.'"></span>
 
     <ul>
         <li th:each="post : ${currentUser.posts}">
-            <!--<a th:href="'/dinosaurs/' + ${dino.id}">-->
             <span th:text="${post.body}"></span><br/>
             <span th:text="${post.createdAt}"></span>
             <!--</a>-->
         </li>
     </ul>
-<!--<div th:if="${!principal.isEmpty}"> TODO FIX THIS SO IT DOESNT SHOW ON NONPRINCIPAL PAGES-->
-<h3 th:if="${principal}">All Users:</h3>
+<hr/>
+<h2 th:if="${principal}">All Users:</h2>
     <ul>
         <li th:each="user : ${allUsers}">
-            <!--<a th:href="'/dinosaurs/' + ${dino.id}">-->
             <p>User: <span th:text="${user.firstName}"></span>, with username <span th:text="${user.username}"></span></p>
             <a th:href="@{/myprofile/} + ${user.username}">See Profile</a>
-            <!--</a>-->
         </li>
     </ul>
 <div th:if="${principal}">

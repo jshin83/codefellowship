@@ -36,9 +36,6 @@ public class AppUserController {
     public String getMyProfile(Principal p, Model m) {
         m.addAttribute("principal", p);
 
-        //converts principal object to my Model object
-//        AppUser currentUser = (AppUser)((UsernamePasswordAuthenticationToken) p).getPrincipal();
-
         AppUser currentUser = appUserRepository.findByUsername(p.getName());
         m.addAttribute("currentUser", currentUser);
 
@@ -67,9 +64,11 @@ public class AppUserController {
     }
 
     @GetMapping("/myprofile/{username}")
-    public String getFollowingProfile(@PathVariable String username, Model m) {
+    public String getFollowingProfile(@PathVariable String username, Model m, Principal p) {
 
         m.addAttribute("principal", false);
+
+        AppUser loggedIn = appUserRepository.findByUsername(p.getName());
 
         //converts principal object to my Model object
 //        AppUser currentUser = (AppUser)((UsernamePasswordAuthenticationToken) p).getPrincipal();
@@ -77,9 +76,11 @@ public class AppUserController {
         AppUser currentUser = appUserRepository.findByUsername(username);
         m.addAttribute("currentUser", currentUser);
 
-        //get all users
-//        Iterable<AppUser> allUsers = appUserRepository.findAll();
-//        m.addAttribute("allUsers", allUsers);
+        if(loggedIn.following.contains(currentUser)) {
+            m.addAttribute("alreadyFollowing", true);
+        } else {
+            m.addAttribute("alreadyFollowing", false);
+        }
 
         return "myprofile";
     }
