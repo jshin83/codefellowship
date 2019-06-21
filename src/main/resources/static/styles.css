@@ -41,6 +41,10 @@ a:visited {
     color: green;
 }
 
+a:hover {
+    text-decoration: underline;
+}
+
 input, textarea {
     font-family: 'News Cycle', sans-serif, 'Neucha', 'Boogaloo', cursive, 'Comic Sans MS', arial, helvetica;
     font-size: 14px;
@@ -56,6 +60,10 @@ input[type=submit] {
     font-family: 'News Cycle', sans-serif, 'Neucha', 'Boogaloo', cursive, 'Comic Sans MS', arial, helvetica;
     font-size: 16px;
     transition: ease-in-out, width .35s ease-in-out;
+}
+
+input[type=submit]:hover {
+    background: #92f4f4;
 }
 
 .nav {

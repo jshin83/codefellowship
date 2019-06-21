@@ -23,7 +23,7 @@
         <ol>
             <li th:each="post : ${account.posts}">
                 <span th:text="${post.body}"></span><br/>
-                <span th:text="${post.createdAt}"></span>
+                <span th:text="${#dates.format(post.createdAt, 'dd-MMM-yyyy HH:mm')}"></span>
             </li>
         </ol>
         <a th:href="'/myprofile/' + ${account.username}">Go to this page</a>
