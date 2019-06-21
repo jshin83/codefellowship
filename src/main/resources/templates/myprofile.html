@@ -23,7 +23,7 @@
     <p>Username: <span th:text="${currentUser.username}"/></p>
     <p>First Name: <span th:text="${currentUser.firstName}"/></p>
     <p>Last Name: <span th:text="${currentUser.lastName}"/></p>
-    <p>Date of Birth: <span th:text="${currentUser.dateOfBirth}"/></p>
+    <p>Date of Birth: <span th:text="${#dates.format(currentUser.dateOfBirth, 'dd-MMM-yyyy')}"/></p>
     <p>Bio: <span th:text="${currentUser.bio}"/></p>
     <br/>
     <h2>Posts</h2>
@@ -32,8 +32,7 @@
     <ul>
         <li th:each="post : ${currentUser.posts}">
             <span th:text="${post.body}"></span><br/>
-            <span th:text="${post.createdAt}"></span>
-            <!--</a>-->
+            <span th:text="${#dates.format(post.createdAt, 'dd-MMM-yyyy HH:mm')}"></span>
         </li>
     </ul>
 <hr/>
