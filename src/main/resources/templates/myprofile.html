@@ -37,6 +37,8 @@
     </ul>
 <hr/>
 <h2 th:if="${principal}">All Users:</h2>
+    <span th:text="${#lists.size(allUsers)} != 0? '': 'There are no other users.'"></span>
+
     <ul>
         <li th:each="user : ${allUsers}">
             <p>User: <span th:text="${user.firstName}"></span>, with username <span th:text="${user.username}"></span></p>
