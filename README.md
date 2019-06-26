@@ -21,3 +21,4 @@ Profile page shows all users. Clickable link to other's page, could follow if no
 
 
 [code](./src/main/java/com.thefuzzydragon.jen.codefellowship)
+[link to AWS](http://codefellowship-dev-jenshin.us-west-2.elasticbeanstalk.com/login)
